@@ -119,7 +119,11 @@ namespace Kelompok2Project
 
                     if (dr.Read())
                     {
-                        
+                        // 🔥 ambil data dari DB
+                        string role = dr["role"].ToString().Trim();
+                        int idAkun = Convert.ToInt32(dr["id_akun"]);
+
+                        MessageBox.Show("Login berhasil!");
 
                        
                     }
