@@ -51,7 +51,10 @@ namespace Kelompok2Project
             this.Close();
         }
 
-        
+        private void btnStok_Click(object sender, EventArgs e)
+        {
+
+        }
 
         
 
