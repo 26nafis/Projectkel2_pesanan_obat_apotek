@@ -124,6 +124,31 @@ namespace Kelompok2Project
             }
         }
 
-        
+        // 🔥 KLIK DATAGRID → MASUK KE TEXTBOX
+        private void dgvObat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvObat.Rows[e.RowIndex];
+
+                txtId.Text = row.Cells["id_obat"].Value.ToString();
+                txtNamaObat.Text = row.Cells["nama_obat"].Value.ToString();
+                txtKategori.Text = row.Cells["kategori"].Value.ToString();
+                txtHarga.Text = row.Cells["harga"].Value.ToString();
+                txtStok.Text = row.Cells["stok"].Value.ToString();
+                txtDeskripsi.Text = row.Cells["deskripsi"].Value.ToString();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtKembali_Click(object sender, EventArgs e)
+        {
+            FormAdmin customer = new FormAdmin();
+            customer.Show();
+        }
     }
 }
