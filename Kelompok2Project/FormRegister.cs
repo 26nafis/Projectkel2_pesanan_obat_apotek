@@ -48,6 +48,11 @@ namespace Kelompok2Project
 
         private void FormRegister_Load(object sender, EventArgs e)
         {
-           
+            // 🔥 TAMBAHAN: isi combobox saat form load
+            cmbRole.Items.Add("Customer");
+            cmbRole.Items.Add("Admin");
+        }
+
+        // 
     }
 }
