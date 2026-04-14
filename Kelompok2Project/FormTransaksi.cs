@@ -39,6 +39,24 @@ namespace Kelompok2Project
 
         }
 
-        
+        // 🔥 TAMBAHAN: tombol checkout
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("sp_insert_transaksi", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@id_akun", idAkun);
+            cmd.Parameters.AddWithValue("@total_harga", 0); // sementara
+            cmd.Parameters.AddWithValue("@status", "Pending");
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Transaksi berhasil!");
+        }
+
         
 }
