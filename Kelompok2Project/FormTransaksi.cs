@@ -22,5 +22,23 @@ namespace Kelompok2Project
             InitializeComponent();
         }
 
+        // 🔥 TAMBAHAN: constructor dengan id user
+        public FormTransaksi(int id)
+        {
+            InitializeComponent();
+            idAkun = id;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormTransaksi_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
         
 }
