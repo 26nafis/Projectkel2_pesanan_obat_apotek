@@ -96,7 +96,29 @@ namespace Kelompok2Project
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
             {
-                
+                // validasi input
+                if (txtEmail.Text == "" || txtPassword.Text == "")
+                {
+                    MessageBox.Show("Harap isi email dan password!");
+                    return;
+                }
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(
+                        "SELECT id_akun, role FROM Akun WHERE email=@email AND password=@password",
+                        conn
+                    );
+
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    if (dr.Read())
+                    {
                         
 
                        
