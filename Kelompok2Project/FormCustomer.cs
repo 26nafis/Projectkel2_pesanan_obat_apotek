@@ -20,7 +20,17 @@ namespace Kelompok2Project
             InitializeComponent();
         }
 
-        
+        // 🔥 TAMBAHAN: constructor dengan parameter
+        public FormCustomer(int id)
+        {
+            InitializeComponent();
+            idAkun = id;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
 
        
 
