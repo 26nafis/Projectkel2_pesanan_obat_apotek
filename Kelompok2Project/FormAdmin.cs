@@ -29,7 +29,15 @@ namespace Kelompok2Project
             f.Show();
         }
 
-        
+        // 🔥 TAMBAHAN: lihat transaksi / riwayat
+        private void btnTransaksi_Click(object sender, EventArgs e)
+        {
+            FormTransaksi f = new FormTransaksi(0); // admin lihat semua
+            f.Show();
+        }
+
+        // 🔥 TAMBAHAN: logout kembali ke login
+       
 
        
 
