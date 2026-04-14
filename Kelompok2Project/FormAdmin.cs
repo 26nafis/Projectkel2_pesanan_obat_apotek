@@ -44,7 +44,12 @@ namespace Kelompok2Project
             this.Close();
         }
 
-       
+        private void btnKelolaObat_Click_1(object sender, EventArgs e)
+        {
+            FormKelolaObat f = new FormKelolaObat();
+            f.Show();
+            this.Close();
+        }
 
         
 
