@@ -22,5 +22,17 @@ namespace Kelompok2Project
             InitializeComponent();
         }
 
+        // 🔥 TAMBAHAN: constructor dengan id user
+        public FormStatus(int id)
+        {
+            InitializeComponent();
+            idAkun = id;
+        }
+
+        private void FormStatus_Load(object sender, EventArgs e)
+        {
+            LoadStatus();
+        }
+
         
 }
