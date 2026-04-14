@@ -38,7 +38,12 @@ namespace Kelompok2Project
             // lblWelcome.Text = "Selamat datang user ID: " + idAkun;
         }
 
-        
+        // 🔥 TAMBAHAN: buka daftar obat
+        private void btnLihatObat_Click(object sender, EventArgs e)
+        {
+            FormObat f = new FormObat();
+            f.Show();
+        }
 
        
 
