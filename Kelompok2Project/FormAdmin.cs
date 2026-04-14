@@ -37,7 +37,12 @@ namespace Kelompok2Project
         }
 
         // 🔥 TAMBAHAN: logout kembali ke login
-       
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin f = new FormLogin();
+            f.Show();
+            this.Close();
+        }
 
        
 
