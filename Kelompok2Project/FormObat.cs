@@ -50,7 +50,18 @@ namespace Kelompok2Project
             conn.Close();
         }
 
-        
+        // 🔥 KLIK DATAGRID → MASUK KE TEXTBOX
+        private void dgvObat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvObat.Rows[e.RowIndex];
+
+                txtId.Text = row.Cells["id_obat"].Value.ToString();
+                txtNamaObat.Text = row.Cells["nama_obat"].Value.ToString();
+                txtHarga.Text = row.Cells["harga"].Value.ToString();
+            }
+        }
 
        
 
