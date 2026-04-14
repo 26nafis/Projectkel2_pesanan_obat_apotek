@@ -12,6 +12,26 @@ namespace Kelompok2Project
 {
     public partial class FormAdmin : Form
     {
+        public FormAdmin()
+        {
+            InitializeComponent();
+        }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        
+
+       
+
+        
+
+        
+
         
     }
 }
