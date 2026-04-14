@@ -53,6 +53,47 @@ namespace Kelompok2Project
             cmbRole.Items.Add("Admin");
         }
 
-        // 
+        // 🔥 TAMBAHAN: tombol daftar
+        private void btnDaftar_Click(object sender, EventArgs e)
+        {
+            if (txtNama.Text == "" || txtEmail.Text == "" || txtPassword.Text == "")
+            {
+                MessageBox.Show("Semua field wajib diisi!");
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("sp_insert_akun", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@nama", txtNama.Text);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+            cmd.Parameters.AddWithValue("@role", cmbRole.Text);
+            cmd.Parameters.AddWithValue("@alamat", txtAlamat.Text);
+            cmd.Parameters.AddWithValue("@no_hp", txtNoHp.Text);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Registrasi berhasil!");
+
+            // kembali ke login
+            FormLogin f = new FormLogin();
+            f.Show();
+            this.Close();
+        }
+
+        private void btnDaftar_Click_1(object sender, EventArgs e)
+        {
+            if (txtNama.Text == "" || txtEmail.Text == "" || txtPassword.Text == "")
+            {
+                MessageBox.Show("Semua field wajib diisi!");
+                return;
+            }
+
+            
     }
 }
