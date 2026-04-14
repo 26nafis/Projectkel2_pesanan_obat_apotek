@@ -34,5 +34,33 @@ namespace Kelompok2Project
             LoadStatus();
         }
 
-        
+        // 🔥 TAMBAHAN: load data status pesanan
+        private void LoadStatus()
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(@"
+                SELECT 
+                    id_transaksi,
+                    tanggal_transaksi,
+                    total_harga,
+                    status
+                FROM Transaksi
+                WHERE id_akun = @id_akun
+                ORDER BY tanggal_transaksi DESC
+            ", conn);
+
+            cmd.Parameters.AddWithValue("@id_akun", idAkun);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            dgvStatus.DataSource = dt;
+
+            conn.Close();
+        }
+
+      
 }
