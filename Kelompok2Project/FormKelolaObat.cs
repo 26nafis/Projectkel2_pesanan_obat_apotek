@@ -37,7 +37,20 @@ namespace Kelompok2Project
             LoadData();
         }
 
-        
+        // 🔥 LOAD DATA KE DATAGRID
+        private void LoadData()
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Obat", conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            dgvObat.DataSource = dt;
+
+            conn.Close();
+        }
 
        
 
