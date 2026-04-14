@@ -97,7 +97,32 @@ namespace Kelompok2Project
             LoadData();
         }
 
-        
+        // 🔥 DELETE DATA
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Yakin ingin menghapus data?",
+                "Konfirmasi",
+                MessageBoxButtons.YesNo
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("sp_delete_obat", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id_obat", txtId.Text);
+
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("Data berhasil dihapus!");
+                LoadData();
+            }
+        }
 
         
     }
