@@ -45,7 +45,12 @@ namespace Kelompok2Project
             f.Show();
         }
 
-       
+        // 🔥 TAMBAHAN: buka riwayat transaksi
+        private void btnRiwayat_Click(object sender, EventArgs e)
+        {
+            FormTransaksi f = new FormTransaksi(idAkun);
+            f.Show();
+        }
 
         
     }
