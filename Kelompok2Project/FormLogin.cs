@@ -31,7 +31,70 @@ namespace Kelompok2Project
 
         }
 
-       
+        // 🔥 TAMBAHAN BUTTON LOGIN
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            // validasi input
+            if (txtEmail.Text == "" || txtPassword.Text == "")
+            {
+                MessageBox.Show("Harap isi email dan password!");
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(
+                "SELECT * FROM Akun WHERE email=@email AND password=@password",
+                conn
+            );
+
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                string role = dr["role"].ToString();
+                int idAkun = Convert.ToInt32(dr["id_akun"]);
+
+                MessageBox.Show("Login berhasil!");
+
+                if (role == "Admin")
+                {
+                    FormAdmin admin = new FormAdmin();
+                    admin.Show();
+                }
+                else
+                {
+                    FormCustomer customer = new FormCustomer(idAkun);
+                    customer.Show();
+                }
+
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Email atau password salah!");
+            }
+
+            conn.Close();
+        }
+
+        private void txtNama_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            FormRegister f = new FormRegister();
+            f.Show();
+        }
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
+        {
             {
                 
                         
