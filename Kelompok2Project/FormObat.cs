@@ -63,7 +63,18 @@ namespace Kelompok2Project
             }
         }
 
-       
+        // 🔥 TAMBAH KE TRANSAKSI
+        private void btnBeli_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text == "" || txtJumlah.Text == "")
+            {
+                MessageBox.Show("Pilih obat dan isi jumlah!");
+                return;
+            }
+
+            FormTransaksi f = new FormTransaksi(idAkun);
+            f.Show();
+        }
 
         
     }
