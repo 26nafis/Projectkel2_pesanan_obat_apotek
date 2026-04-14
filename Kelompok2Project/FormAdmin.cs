@@ -56,7 +56,12 @@ namespace Kelompok2Project
 
         }
 
-        
+        private void btnTransaksi_Click_1(object sender, EventArgs e)
+        {
+            FormTransaksi f = new FormTransaksi();
+            f.Show();
+            this.Close();
+        }
 
         
     }
