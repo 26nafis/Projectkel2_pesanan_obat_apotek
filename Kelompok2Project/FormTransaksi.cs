@@ -58,5 +58,25 @@ namespace Kelompok2Project
             MessageBox.Show("Transaksi berhasil!");
         }
 
-        
+        // 🔥 TAMBAHAN: kembali ke customer
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            FormCustomer f = new FormCustomer(idAkun);
+            f.Show();
+            this.Close();
+        }
+
+        private void btnRiwayat_Click(object sender, EventArgs e)
+        {
+            FormStatus f = new FormStatus(idAkun);
+            f.Show();
+            this.Close();
+        }
+
+        private void txtKembali_Click(object sender, EventArgs e)
+        {
+            FormAdmin formAdmin = new FormAdmin();
+            formAdmin.Show();
+        }
+    }
 }
