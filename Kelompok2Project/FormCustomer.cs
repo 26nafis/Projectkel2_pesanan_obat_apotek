@@ -32,7 +32,11 @@ namespace Kelompok2Project
 
         }
 
-       
+        private void FormCustomer_Load(object sender, EventArgs e)
+        {
+            // 🔥 TAMBAHAN: tampilkan info user (opsional)
+            // lblWelcome.Text = "Selamat datang user ID: " + idAkun;
+        }
 
         
 
