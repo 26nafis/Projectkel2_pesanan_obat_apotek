@@ -63,6 +63,9 @@ namespace Kelompok2Project
             this.Close();
         }
 
-        
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
