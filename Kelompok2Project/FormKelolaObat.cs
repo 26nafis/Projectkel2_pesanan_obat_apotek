@@ -52,7 +52,27 @@ namespace Kelompok2Project
             conn.Close();
         }
 
-       
+        // 🔥 TAMBAH DATA
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("sp_insert_obat", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@nama_obat", txtNamaObat.Text);
+            cmd.Parameters.AddWithValue("@kategori", txtKategori.Text);
+            cmd.Parameters.AddWithValue("@harga", txtHarga.Text);
+            cmd.Parameters.AddWithValue("@stok", txtStok.Text);
+            cmd.Parameters.AddWithValue("@deskripsi", txtDeskripsi.Text);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Data berhasil ditambahkan!");
+            LoadData();
+        }
 
 
         
