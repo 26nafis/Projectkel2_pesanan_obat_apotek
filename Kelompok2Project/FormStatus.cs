@@ -68,5 +68,18 @@ namespace Kelompok2Project
             LoadStatus();
         }
 
-       
+        // 🔥 TAMBAHAN: kembali ke customer
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            FormCustomer f = new FormCustomer(idAkun);
+            f.Show();
+            this.Close();
+        }
+
+        private void btnKembali_Click_1(object sender, EventArgs e)
+        {
+            FormTransaksi customer = new FormTransaksi();
+            customer.Show();
+        }
+    }
 }
