@@ -22,7 +22,12 @@ namespace Kelompok2Project
 
         }
 
-        
+        // 🔥 TAMBAHAN: buka form kelola obat
+        private void btnKelolaObat_Click(object sender, EventArgs e)
+        {
+            FormObat f = new FormObat();
+            f.Show();
+        }
 
         
 
