@@ -125,7 +125,27 @@ namespace Kelompok2Project
 
                         MessageBox.Show("Login berhasil!");
 
-                       
+                        // 🔥 LOGIN 1 BUTTON (ADMIN & CUSTOMER)
+                        if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                        {
+                            FormAdmin admin = new FormAdmin();
+                            admin.Show();
+                        }
+                        else if (role.Equals("Customer", StringComparison.OrdinalIgnoreCase))
+                        {
+                            FormCustomer customer = new FormCustomer(idAkun);
+                            customer.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Role tidak dikenali!");
+                        }
+
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email atau password salah!");
                     }
                 }
             }
