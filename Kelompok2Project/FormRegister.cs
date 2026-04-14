@@ -38,6 +38,16 @@ namespace Kelompok2Project
 
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // 🔥 TAMBAHAN: biar tidak dobel
+            if (cmbRole.Items.Count == 0)
+            {
+                cmbRole.Items.Add("Customer");
+                cmbRole.Items.Add("Admin");
+            }
+        }
+
+        private void FormRegister_Load(object sender, EventArgs e)
+        {
            
     }
 }
