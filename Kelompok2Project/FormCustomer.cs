@@ -52,6 +52,12 @@ namespace Kelompok2Project
             f.Show();
         }
 
-        
+        // 🔥 TAMBAHAN: logout
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin f = new FormLogin();
+            f.Show();
+            this.Close();
+        }
     }
 }
