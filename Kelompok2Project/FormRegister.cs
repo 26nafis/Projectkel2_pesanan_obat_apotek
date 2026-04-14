@@ -94,6 +94,41 @@ namespace Kelompok2Project
                 return;
             }
 
-            
+            // 🔥 VALIDASI NOMOR HP
+            if (txtNoHp.Text == "")
+            {
+                MessageBox.Show("Nomor HP wajib diisi!");
+                return;
+            }
+
+            // harus angka semua
+            if (!txtNoHp.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Nomor HP harus berupa angka saja!");
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("sp_insert_akun", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@nama", txtNama.Text);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+            cmd.Parameters.AddWithValue("@role", cmbRole.Text);
+            cmd.Parameters.AddWithValue("@alamat", txtAlamat.Text);
+            cmd.Parameters.AddWithValue("@no_hp", txtNoHp.Text);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Registrasi berhasil!");
+
+            FormLogin f = new FormLogin();
+            f.Show();
+            this.Close();
+        }
     }
 }
