@@ -76,6 +76,17 @@ namespace Kelompok2Project
             f.Show();
         }
 
-        
+        // 🔥 KEMBALI
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            FormCustomer f = new FormCustomer(idAkun);
+            f.Show();
+            this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
