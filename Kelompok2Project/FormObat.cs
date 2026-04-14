@@ -23,7 +23,17 @@ namespace Kelompok2Project
             InitializeComponent();
         }
 
-        
+        // 🔥 TAMBAHAN: constructor dengan id user
+        public FormObat(int id)
+        {
+            InitializeComponent();
+            idAkun = id;
+        }
+
+        private void FormObat_Load(object sender, EventArgs e)
+        {
+            LoadObat();
+        }
 
         
 
