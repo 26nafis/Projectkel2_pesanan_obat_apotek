@@ -93,23 +93,23 @@ namespace kelompok2
         }
 
         // --- 4. UPDATE (Edit Data) ---
+        // --- UPDATE (Edit Data) ---
         private void btnupdate_Click(object sender, EventArgs e)
         {
             try
             {
                 conn.Open();
-                // Mengambil ID dari baris yang dipilih di GridView
                 string id = dgvObat.CurrentRow.Cells["id_obat"].Value.ToString();
-                string sql = "UPDATE Obat SET nama_obat=@nama, harga=@harga, stok=@stok, deskripsi=@desc WHERE id_obat=@id";
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@nama", txtNamaObat.Text);
-                cmd.Parameters.AddWithValue("@harga", txtHarga.Text);
-                cmd.Parameters.AddWithValue("@stok", txtStok.Text);
-                cmd.Parameters.AddWithValue("@desc", rtbDeskripsi.Text);
-                cmd.ExecuteNonQuery();
-
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateObat", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@nama", txtNamaObat.Text);
+                    cmd.Parameters.AddWithValue("@harga", txtHarga.Text);
+                    cmd.Parameters.AddWithValue("@stok", txtStok.Text);
+                    cmd.Parameters.AddWithValue("@desc", rtbDeskripsi.Text);
+                    cmd.ExecuteNonQuery();
+                }
                 MessageBox.Show("Data Obat Berhasil Diupdate!");
                 TampilDataObat();
             }
