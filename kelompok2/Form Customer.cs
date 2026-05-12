@@ -207,5 +207,10 @@ namespace kelompok2
             menu.Show();
             this.Hide();
         }
+
+        private void btntest_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
