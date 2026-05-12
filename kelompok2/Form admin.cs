@@ -64,35 +64,32 @@ namespace kelompok2
         }
 
         // --- 3. CREATE (Tambah Data) ---
+        // --- CREATE (Tambah Data) ---
         private void btntambah_Click_1(object sender, EventArgs e)
         {
             if (txtNamaObat.Text == "" || txtHarga.Text == "" || txtStok.Text == "")
             {
                 MessageBox.Show("Data tidak boleh kosong!");
+                return;
             }
-            else
+            try
             {
-                try
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("sp_InsertObat", conn))
                 {
-                    conn.Open();
-                    string sql = "INSERT INTO Obat (nama_obat, harga, stok, deskripsi) VALUES (@nama, @harga, @stok, @desc)";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@nama", txtNamaObat.Text);
                     cmd.Parameters.AddWithValue("@harga", txtHarga.Text);
                     cmd.Parameters.AddWithValue("@stok", txtStok.Text);
                     cmd.Parameters.AddWithValue("@desc", rtbDeskripsi.Text);
                     cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Data Obat Berhasil Disimpan!");
-                    TampilDataObat();
-                    BersihkanForm();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-                finally { conn.Close(); }
+                MessageBox.Show("Data Obat Berhasil Disimpan!");
+                TampilDataObat();
+                BersihkanForm();
             }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            finally { conn.Close(); }
         }
 
         // --- 4. UPDATE (Edit Data) ---
