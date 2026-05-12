@@ -42,16 +42,62 @@ namespace kelompok2
 
         private void FormCustomer_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'apotekDBDataSet.Transaksi' table. You can move, or remove it, as needed.
-            this.transaksiTableAdapter.Fill(this.apotekDBDataSet.Transaksi);
-            // TODO: This line of code loads data into the 'apotekDBDataSet.Obat' table. You can move, or remove it, as needed.
-            this.obatTableAdapter.Fill(this.apotekDBDataSet.Obat);
+            // Menggunakan Stored Procedure untuk memuat data (Langkah 4 Modul 10)
+            LoadDataObat();
+            LoadDataTransaksi();
+
             TampilKatalog();
             textBox1.Text = "1";
 
             if (string.IsNullOrEmpty(FormAdmin.IdAkunLogin))
             {
                 MessageBox.Show("Peringatan: Sesi Login tidak terdeteksi. Silakan Login kembali.", "Sesi Habis");
+            }
+        }
+
+        // Fungsi bantu untuk memuat data Obat menggunakan SP
+        private void LoadDataObat()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(this.apotekDBDataSet.CaseSensitive ? "" : "Your_Connection_String_Here")) // Gunakan connection string Anda
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_GetObatPublic", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure; // Wajib diset ke StoredProcedure [cite: 487]
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(this.apotekDBDataSet.Obat); // Mengisi dataset yang sudah ada [cite: 491]
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat data obat: " + ex.Message);
+            }
+        }
+
+        // Fungsi bantu untuk memuat data Transaksi menggunakan SP
+        private void LoadDataTransaksi()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection("Your_Connection_String_Here"))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_GetTransaksi", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(this.apotekDBDataSet.Transaksi);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat data transaksi: " + ex.Message);
             }
         }
 
