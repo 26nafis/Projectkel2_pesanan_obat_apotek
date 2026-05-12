@@ -43,6 +43,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(190, 26);
             this.txtEmail.TabIndex = 0;
+            this.txtEmail.Text = "dito12@gmail.com";
             this.txtEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // EMAIL
@@ -72,6 +73,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(190, 26);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "123";
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // button1

@@ -218,7 +218,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1200, 33);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1200, 38);
             this.bindingNavigator1.TabIndex = 13;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -228,7 +228,7 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(34, 28);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(34, 33);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorCountItem
@@ -318,10 +318,11 @@
             // 
             // btntest
             // 
+            this.btntest.BackColor = System.Drawing.Color.Lime;
             this.btntest.Location = new System.Drawing.Point(135, 300);
             this.btntest.Name = "btntest";
             this.btntest.Size = new System.Drawing.Size(114, 31);
-            this.btntest.TabIndex = 14;
+            this.btntest.TabIndex = 6;
             this.btntest.Text = "Test";
             this.btntest.UseVisualStyleBackColor = true;
             this.btntest.Click += new System.EventHandler(this.btntest_Click);

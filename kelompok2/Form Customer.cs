@@ -82,22 +82,34 @@ namespace kelompok2
             {
                 using (SqlConnection connection = new SqlConnection(conn.ConnectionString))
                 {
-                    connection.Open();
-                    string sql = "SELECT @harga * @jumlah";
-
-                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    // 1. Ubah query string menjadi nama Stored Procedure
+                    using (SqlCommand cmd = new SqlCommand("sp_HitungTotalPesanan", connection))
                     {
+                        // 2. Atur CommandType menjadi StoredProcedure sesuai modul
+                        cmd.CommandType = CommandType.StoredProcedure;
+
                         int jumlahBeli = 0;
                         if (!int.TryParse(textBox1.Text, out jumlahBeli)) return;
 
+                        // 3. Tambahkan parameter input
                         cmd.Parameters.AddWithValue("@harga", hargaSatuan);
                         cmd.Parameters.AddWithValue("@jumlah", jumlahBeli);
 
-                        object result = cmd.ExecuteScalar();
+                        // 4. Tambahkan parameter OUTPUT sesuai Langkah 6 Modul 10
+                        SqlParameter outputParam = new SqlParameter("@TotalHarga", SqlDbType.Decimal);
+                        outputParam.Precision = 15;
+                        outputParam.Scale = 2;
+                        outputParam.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(outputParam);
 
-                        if (result != null)
+                        connection.Open();
+                        // 5. Gunakan ExecuteNonQuery karena nilai diambil via parameter output
+                        cmd.ExecuteNonQuery();
+
+                        // 6. Ambil nilai dari parameter output setelah eksekusi
+                        if (outputParam.Value != DBNull.Value)
                         {
-                            decimal totalHarga = Convert.ToDecimal(result);
+                            decimal totalHarga = Convert.ToDecimal(outputParam.Value);
                             label1.Text = "Rp " + totalHarga.ToString("N0");
                             label1.ForeColor = Color.Red;
                         }
@@ -212,14 +224,10 @@ namespace kelompok2
         {
             try
             {
-                // Pastikan connectionString sudah didefinisikan di class Form Anda
+                
+                using (SqlConnection connection = new SqlConnection(conn.ConnectionString))
                 {
                     conn.Open();
-
-                    /* BAGIAN KRITIKAL:
-                       Kueri ini TIDAK AMAN karena txtIDObat.Text digabungkan langsung.
-                       Simulasi ini akan mengubah nama semua obat jika diinjeksi.
-                    */
                     string query = "UPDATE Obat SET nama_obat = 'HACKED' WHERE id_obat = " + txtNamaObat.Text;
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
