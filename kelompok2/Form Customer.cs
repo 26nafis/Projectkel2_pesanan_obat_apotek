@@ -210,7 +210,29 @@ namespace kelompok2
 
         private void btntest_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Pastikan connectionString sudah didefinisikan di class Form Anda
+                {
+                    conn.Open();
 
+                    /* BAGIAN KRITIKAL:
+                       Kueri ini TIDAK AMAN karena txtIDObat.Text digabungkan langsung.
+                       Simulasi ini akan mengubah nama semua obat jika diinjeksi.
+                    */
+                    string query = "UPDATE Obat SET nama_obat = 'HACKED' WHERE id_obat = " + txtNamaObat.Text;
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        int result = cmd.ExecuteNonQuery();
+                        MessageBox.Show(result + " baris berhasil diupdate (terinfeksi)!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }
