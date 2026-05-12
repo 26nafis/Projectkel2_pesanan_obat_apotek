@@ -118,6 +118,7 @@ namespace kelompok2
         }
 
         // --- 5. DELETE (Hapus Data) ---
+        // --- DELETE (Hapus Data) ---
         private void btnhapus_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Hapus obat ini?", "Konfirmasi", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -126,8 +127,12 @@ namespace kelompok2
                 {
                     conn.Open();
                     string id = dgvObat.CurrentRow.Cells["id_obat"].Value.ToString();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM Obat WHERE id_obat='" + id + "'", conn);
-                    cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = new SqlCommand("sp_DeleteObat", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
                     MessageBox.Show("Data Berhasil Dihapus");
                     TampilDataObat();
                 }
