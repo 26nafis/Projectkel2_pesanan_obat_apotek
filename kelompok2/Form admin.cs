@@ -55,6 +55,7 @@ namespace kelompok2
         private BindingSource BindingSource = new BindingSource();
         private DataTable dtobat = new DataTable();
 
+        //test
         private void Form_admin_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'apotekDBDataSet.Obat' table. You can move, or remove it, as needed.
